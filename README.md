@@ -8,8 +8,8 @@ Below you'll find the links to the dedicated repositories for each of my project
 
 | Project Name | Description | Link to Repository |
 | :--- | :--- | :--- |
-| **NeumoDiagnostics** | Microservices-based architecture project. | [📂 NeumoDiagnostics](https://github.com/unobeswarch) |
-| **AgroWeb** | Software engineering project. | [📂 AgroWeb](https://github.com/AgroWeb-Capibaras-IngSoft2) |
+| **NeumoDiagnostics** | Microservices-based architecture project. | [📂 NeumoDiagnostics (Organization)](https://github.com/unobeswarch) |
+| **AgroWeb** | Software engineering project. | [📂 AgroWeb (Organization)](https://github.com/AgroWeb-Capibaras-IngSoft2) |
 | **Tablet Kiosk Deployment** | Deployment setup and scripting for tablet kiosks. | [📂 Tablet-Kiosk-Deployment](https://github.com/Ssiabatto/Tablet-Kiosk-Deployment) |
 | **AgenteTetris** | Intelligent agent developed to play Tetris. | [📂 AgenteTetris](https://github.com/Ssiabatto/AgenteTetris) |
 | **Huffman Image Encoding** | Image encoding implementation using Huffman trees. | [📂 Huffman_Image_Encoding](https://github.com/Ssiabatto/Huffman_Image_Encoding) |
