@@ -1,6 +1,10 @@
 # Ignore the private Success Roadmap repository
 /Success Roadmap/
 
+# Ignore organization projects (can't be git submodules because they span multiple repo folders)
+/Projects/NeumoDiagnostics/
+/Projects/AgroWeb/
+
 # Ignore projects that are not yet ready to be published
 /Projects/ControlEdificioVigilantes/
 /Projects/Proyecto Cuadrito/

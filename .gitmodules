@@ -1,9 +1,3 @@
-[submodule "Projects/NeumoDiagnostics"]
-	path = Projects/NeumoDiagnostics
-	url = https://github.com/unobeswarch.git
-[submodule "Projects/AgroWeb"]
-	path = Projects/AgroWeb
-	url = https://github.com/AgroWeb-Capibaras-IngSoft2/AgroWeb.git
 [submodule "Projects/SOTabletas"]
 	path = Projects/SOTabletas
 	url = https://github.com/Ssiabatto/Tablet-Kiosk-Deployment.git
@@ -19,3 +13,4 @@
 [submodule "Projects/UNForecasting"]
 	path = Projects/UNForecasting
 	url = https://github.com/Ssiabatto/UNForecasting.git
+
