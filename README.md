@@ -8,13 +8,13 @@ Below you'll find the links to the dedicated repositories for each of my project
 
 | Project Name | Description | Link to Repository |
 | :--- | :--- | :--- |
-| **NeumoDiagnostics** | Microservices-based architecture project. | [📂 unobeswarch/NeumoDiagnostics](https://github.com/unobeswarch/NeumoDiagnostics) |
-| **AgroWeb** | Software engineering project. | [📂 AgroWeb-Capibaras-IngSoft2/AgroWeb](https://github.com/AgroWeb-Capibaras-IngSoft2) |
-| **Tablet Kiosk Deployment** | Deployment setup and scripting for tablet kiosks. | [📂 Ssiabatto/Tablet-Kiosk-Deployment](https://github.com/Ssiabatto/Tablet-Kiosk-Deployment) |
-| **AgenteTetris** | Intelligent agent developed to play Tetris. | [📂 Ssiabatto/AgenteTetris](https://github.com/Ssiabatto/AgenteTetris) |
-| **Huffman Image Encoding** | Image encoding implementation using Huffman trees. | [📂 Ssiabatto/Huffman_Image_Encoding](https://github.com/Ssiabatto/Huffman_Image_Encoding) |
-| **Coffee Leaf Diseases Detection** | Machine learning notebooks for disease detection. | [📂 Ssiabatto/Coffee-Leaf-Diseases-Detection](https://github.com/Ssiabatto/Coffee-Leaf-Diseases-Detection) |
-| **UNForecasting** | Time series forecasting models and analysis. | [📂 Ssiabatto/UNForecasting](https://github.com/Ssiabatto/UNForecasting) |
+| **NeumoDiagnostics** | Microservices-based architecture project. | [📂 NeumoDiagnostics](https://github.com/unobeswarch) |
+| **AgroWeb** | Software engineering project. | [📂 AgroWeb](https://github.com/AgroWeb-Capibaras-IngSoft2) |
+| **Tablet Kiosk Deployment** | Deployment setup and scripting for tablet kiosks. | [📂 Tablet-Kiosk-Deployment](https://github.com/Ssiabatto/Tablet-Kiosk-Deployment) |
+| **AgenteTetris** | Intelligent agent developed to play Tetris. | [📂 AgenteTetris](https://github.com/Ssiabatto/AgenteTetris) |
+| **Huffman Image Encoding** | Image encoding implementation using Huffman trees. | [📂 Huffman_Image_Encoding](https://github.com/Ssiabatto/Huffman_Image_Encoding) |
+| **Coffee Leaf Diseases Detection** | Machine learning notebooks for disease detection. | [📂 Coffee-Leaf-Diseases-Detection](https://github.com/Ssiabatto/Coffee-Leaf-Diseases-Detection) |
+| **UNForecasting** | Time series forecasting models and analysis. | [📂 UNForecasting](https://github.com/Ssiabatto/UNForecasting) |
 
 *(Note: Several other projects are currently in development and will be added here once they are ready to be published.)*
 
