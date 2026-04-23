@@ -1,0 +1,491 @@
+{
+  // AgroWeb - VS Code workspace con Frontend, APIs y configuración centralizada
+  
+  "folders": [
+    {
+      "name": "🌱 FrontEnd",
+      "path": "../FrontEnd"
+    },
+    {
+      "name": "📦 Serv_GestionProductos", 
+      "path": "../Serv_GestionProductos"
+    },
+    {
+      "name": "👥 Serv_Usuarios",
+      "path": "../Serv_Usuarios"
+    },
+    {
+      "name": "🧪 IntegrationTests",
+      "path": "../IntegrationTests"
+    },
+    {
+      "name": "⚙️ WorkspaceSetup",
+      "path": "."
+    }
+  ],
+  
+  "settings": {
+    "workbench.colorTheme": "Monokai",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+      "Command Prompt": {
+        "path": "cmd.exe",
+        "args": ["/k"]
+      },
+      "Anaconda Prompt": {
+        "path": "cmd.exe",
+        "args": ["/k", "%USERPROFILE%\\anaconda3\\Scripts\\activate.bat", "%USERPROFILE%\\anaconda3"]
+      }
+    },
+    "terminal.integrated.splitCwd": "workspaceRoot",
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "python.defaultInterpreterPath": "conda",
+    "python.terminal.activateEnvironment": true,
+    "python.condaPath": "conda",
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "emmet.includeLanguages": {
+      "typescript": "html",
+      "typescriptreact": "html"
+    }
+  },
+  
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "bradlc.vscode-tailwindcss",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-docker"
+    ]
+  },
+  
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🚀 Sistema Completo (Entornos Aislados)",
+        "dependsOn": [
+          "🍃 Iniciar MongoDB",
+          "🗃️ Infraestructura (Conda)",
+          "🥕 API Productos (Conda)",
+          "👥 API Usuarios (Venv)",
+          "🌐 Frontend (Node)"
+        ],
+        "dependsOrder": "sequence",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        }
+      },
+    {
+      "label": "🔧 Inicializar Conda",
+      "type": "shell",
+      "command": "call conda init cmd.exe",
+      "group": "build",
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/c"]
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "🍃 Verificar MongoDB",
+      "type": "shell",
+      "command": "python -c \"from pymongo import MongoClient; client = MongoClient('localhost', 27017, serverSelectionTimeoutMS=2000); client.admin.command('ping'); print('✅ MongoDB conectado exitosamente'); client.close()\"",
+      "group": "build",
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/c"]
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    },      {
+        "label": "🍃 Iniciar MongoDB",
+        "type": "shell",
+        "command": "start_mongodb.bat auto",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "isBackground": true,
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "dedicated",
+          "group": "database"
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "."
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "MongoDB iniciado|MongoDB detenido"
+          }
+        }
+      },
+      {
+        "label": "🔧 Setup Entornos",
+        "type": "shell",
+        "command": "call conda init cmd.exe && call conda create -n agroweb python=3.9 -y && call conda activate agroweb && pip install cassandra-driver flask flask-cors prometheus-client",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:📦 Serv_GestionProductos}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🗃️ Infraestructura (Conda)",
+        "type": "shell",
+        "command": "call conda init cmd.exe && call conda activate agroweb && docker-compose up -d",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:📦 Serv_GestionProductos}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "dedicated",
+          "group": "infraestructura"
+        }
+      },
+      {
+        "label": "🥕 API Productos (Conda)",
+        "type": "shell",
+        "command": "call conda init cmd.exe && call conda activate agroweb && echo Esperando Cassandra... && timeout /t 45 /nobreak && python app.py",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:📦 Serv_GestionProductos}",
+          "env": {
+            "FLASK_ENV": "development",
+            "FLASK_DEBUG": "1"
+          },
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "isBackground": true,
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "dedicated",
+          "group": "productos"
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "."
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "Running on"
+          }
+        }
+      },
+      {
+        "label": "👥 API Usuarios (Venv)",
+        "type": "shell",
+        "command": "echo Esperando MongoDB... && timeout /t 5 /nobreak && python -m venv venv_usuarios && venv_usuarios\\Scripts\\activate && pip install -r requirements.txt && python app.py",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:👥 Serv_Usuarios}",
+          "env": {
+            "FLASK_ENV": "development",
+            "FLASK_DEBUG": "1"
+          },
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "isBackground": true,
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "dedicated",
+          "group": "usuarios"
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "."
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "Running on"
+          }
+        }
+      },
+      {
+        "label": "🌐 Frontend (Node)",
+        "type": "shell",
+        "command": "npm install && npm run dev",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:🌱 FrontEnd}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "isBackground": true,
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "dedicated",
+          "group": "frontend"
+        },
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "."
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "Local:"
+          }
+        }
+      },
+      {
+        "label": "📊 Poblar Datos",
+        "type": "shell",
+        "command": "call conda init cmd.exe && call conda activate agroweb && python populate_data.py",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "⛔ Detener Todo",
+        "type": "shell",
+        "command": "stop_all.bat",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}"
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🔍 Verificar Estado",
+        "type": "shell",
+        "command": "check_status.bat",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🧪 Tests Integración - Productos",
+        "type": "shell",
+        "command": "pytest tests/test_product_lifecycle.py -v --tb=short",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}/../IntegrationTests",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🧪 Tests Integración - Usuarios",
+        "type": "shell",
+        "command": "pytest tests/test_api_integration.py::TestUsuarios -v --tb=short",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}/../IntegrationTests",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🧪 Tests Integración - Completos",
+        "type": "shell",
+        "command": "pytest -v --tb=short --durations=10",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}/../IntegrationTests",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "📊 Prometheus Nativo",
+        "type": "shell",
+        "command": "start_prometheus_native.cmd",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:📦 Serv_GestionProductos}/observability",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🔧 Solo MongoDB",
+        "type": "shell",
+        "command": "start_mongodb.bat",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:⚙️ WorkspaceSetup}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      },
+      {
+        "label": "🔧 Solo Cassandra",
+        "type": "shell",
+        "command": "call conda init cmd.exe && call conda activate agroweb && docker-compose up -d",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder:📦 Serv_GestionProductos}",
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+          "panel": "new"
+        }
+      }
+    ]
+  },
+  
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Productos API",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder:📦 Serv_GestionProductos}/app.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder:📦 Serv_GestionProductos}",
+        "env": {
+          "FLASK_ENV": "development",
+          "FLASK_DEBUG": "1"
+        }
+      },
+      {
+        "name": "Debug Usuarios API", 
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder:👥 Serv_Usuarios}/app.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder:👥 Serv_Usuarios}",
+        "env": {
+          "FLASK_ENV": "development",
+          "FLASK_DEBUG": "1"
+        }
+      }
+    ]
+  }
+}

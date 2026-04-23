@@ -1,0 +1,25 @@
+{
+  "id": 6669854,
+  "name": "feature branches",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "AgroWeb-Capibaras-IngSoft2/FrontEnd",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/feature/*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": []
+}

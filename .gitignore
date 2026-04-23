@@ -1,0 +1,9 @@
+# Ignore the private Success Roadmap repository
+/Success Roadmap/
+
+# Ignore projects that are not yet ready to be published
+/Projects/ControlEdificioVigilantes/
+/Projects/Proyecto Cuadrito/
+/Projects/Proyecto CuadritoSinEditar/
+/Projects/VideoImprover/
+/Projects/WORDPRESS/

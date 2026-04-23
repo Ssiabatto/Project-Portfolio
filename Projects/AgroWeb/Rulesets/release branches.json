@@ -1,0 +1,25 @@
+{
+  "id": 6669933,
+  "name": "release branches",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "AgroWeb-Capibaras-IngSoft2/FrontEnd",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/heads/release/*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": []
+}
