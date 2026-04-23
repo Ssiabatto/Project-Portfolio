@@ -5,7 +5,7 @@
 	path = Projects/AgenteTetris
 	url = https://github.com/Ssiabatto/AgenteTetris.git
 [submodule "Projects/Huffman_Encoding"]
-	path = Projects/Huffman_Encoding
+	path = Projects/Huffman_Encoding/huffman_encoding_project
 	url = https://github.com/Ssiabatto/Huffman_Image_Encoding.git
 [submodule "Projects/Coffee_Leaf_Diseases_Detection"]
 	path = Projects/Coffee_Leaf_Diseases_Detection
